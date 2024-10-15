@@ -1,18 +1,46 @@
 <html>
 <head>
-	<title>OrganicMaps links</title>
+    <title>OrganicMaps links</title>
+    <script type="text/javascript">
+function docReady(fn) {
+    // see if DOM is already available
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+        // call on next available tick
+        setTimeout(fn, 1);
+    } else {
+        document.addEventListener("DOMContentLoaded", fn);
+    }
+}
+
+function initializeViberLink() {
+    let inputEl = document.getElementById("viber-phone-number");
+    let linkEl = document.getElementById("viber-link");
+    inputEl.addEventListener("input", function() {
+        const regex = /[\-\s\(\)]/g;
+        let phoneNumber = inputEl.value.replace("+", "%2B").replaceAll(regex, "");
+        linkEl.innerText = "viber://contact?number=" + phoneNumber;
+        linkEl.setAttribute("href", "viber://contact?number=" + phoneNumber);
+    });
+}
+
+docReady(initializeViberLink);
+
+    </script>
 </head>
 <body>
-	<ul>
-		<li>
-			<a href="geo:0,0?q=50.443533,30.533792&z=16&app.organicmaps.api.extra.PICK_POINT=true">geo:0,0?q=50.443533,30.533792&z=16&app.organicmaps.api.extra.PICK_POINT=true</a>
-		</li>
-		<li>
-			<a href="intent://#Intent;package=app.organicmaps;scheme=om;S.app.organicmaps.api.extra.PICK_POINT=true;end">intent://#Intent;package=app.organicmaps;scheme=om;S.app.organicmaps.api.extra.PICK_POINT=true;end</a>
-		</li>
-		<li>
-			<a href="intent://#Intent;package=app.organicmaps.debug;scheme=om;S.app.organicmaps.api.extra.PICK_POINT=true;end">intent://#Intent;package=app.organicmaps.debug;scheme=om;S.app.organicmaps.api.extra.PICK_POINT=true;end</a>
-		</li>
-	</ul>
+    <ul>
+        <li>
+            <a href="geo:0,0?q=50.443533,30.533792&z=16&app.organicmaps.api.extra.PICK_POINT=true">geo:0,0?q=50.443533,30.533792&z=16&app.organicmaps.api.extra.PICK_POINT=true</a>
+        </li>
+        <li>
+            <a href="intent://#Intent;package=app.organicmaps;scheme=om;S.app.organicmaps.api.extra.PICK_POINT=true;end">intent://#Intent;package=app.organicmaps;scheme=om;S.app.organicmaps.api.extra.PICK_POINT=true;end</a>
+        </li>
+        <li>
+            <a href="intent://#Intent;package=app.organicmaps.debug;scheme=om;S.app.organicmaps.api.extra.PICK_POINT=true;end">intent://#Intent;package=app.organicmaps.debug;scheme=om;S.app.organicmaps.api.extra.PICK_POINT=true;end</a>
+        </li>
+        <li>
+            <input type="text" id="viber-phone-number" value="phone here"/> - <a id="viber-link" href="viber://contact?number=">viber://contact?number=</a>
+        </li>
+    </ul>
 </body>
 </html>
