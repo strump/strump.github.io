@@ -3333,7 +3333,7 @@ body {
 
     .md\:text-7xl {
         font-size: 4.5rem;
-        line-height: 1
+        line-height: normal
     }
 
     .md\:text-sm {
