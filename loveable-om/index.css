@@ -725,10 +725,6 @@ body {
     display: none
 }
 
-.aspect-\[9\/16\] {
-    aspect-ratio: 9/16
-}
-
 .aspect-square {
     aspect-ratio: 1 / 1
 }
