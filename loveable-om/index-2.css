@@ -575,5 +575,5 @@
 }
 
 .lang-dropdown:hover .langs-list{
-    display: inline;
+    display: block;
 }
