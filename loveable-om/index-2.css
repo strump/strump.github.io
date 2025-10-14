@@ -565,3 +565,15 @@
         animation: none !important
     }
 }
+
+.lang-dropdown:hover{
+    padding-top: 10px;
+}
+
+.lang-dropdown .langs-list{
+    display: none;
+}
+
+.lang-dropdown:hover .langs-list{
+    display: inline;
+}
