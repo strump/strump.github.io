@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Maps - Navigate Your World</title>
+    <meta name="author" content="Organic Maps">
+
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index-2.css">
+</head>
+
+<body>
+<div id="root">
+    <div role="region" aria-label="Notifications (F8)" tabindex="-1" style="pointer-events: none;">
+        <ol tabindex="-1"
+            class="fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]"></ol>
+    </div>
+    <section aria-label="Notifications alt+T" tabindex="-1" aria-live="polite" aria-relevant="additions text"
+             aria-atomic="false"></section>
+    <div class="min-h-screen">
+        <!-- Header start -->
+        <nav class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
+            <div class="container mx-auto px-4">
+                <div class="flex items-center justify-between h-16"><a class="flex items-center space-x-2" href="/">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary">
+                        <img class="rounded-lg" src="images/android-chrome-512x512.png"/>
+                    </div>
+                    <span class="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Organic Maps</span></a>
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a class="text-foreground/80 hover:text-foreground transition-colors" href="/news">News</a>
+                        <a class="text-foreground/80 hover:text-foreground transition-colors" href="/donations">Donate</a>
+                        <a class="text-foreground/80 hover:text-foreground transition-colors" href="/contributions">Contribute</a>
+                        <a class="text-foreground/80 hover:text-foreground transition-colors" href="/contacts">F.A.Q.</a>
+                        <a class="text-foreground/80 hover:text-foreground transition-colors" href="/contacts">GitHub</a>
+                        <button class="items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 w-12 lang-dropdown"
+                                type="button" style="display: inline-block">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 style="display: inline"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="lucide lucide-globe h-5 w-5">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                                <path d="M2 12h20"></path>
+                            </svg>
+                            <span>EN</span>
+                            <div style="position: relative; left: -200px; top: 10px; min-width: max-content;" class="langs-list z-50">
+                                <div id="columns" style="display: inline-block" class="rounded-md border bg-popover shadow-md">
+                                    <div class="z-50 min-w-[8rem] overflow-hidden p-1 text-popover-foreground"
+                                         tabindex="-1" data-orientation="vertical"
+                                         style="outline: none; display: inline-block">
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground bg-accent">
+                                            English</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Afrikaans</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            العربية</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Català</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Čeština</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Cymraeg</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Deutsch</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Ελληνικά</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Español</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Eesti</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Euskara</a>                                </div>
+                                    <div class="z-50 min-w-[8rem] overflow-hidden p-1 text-popover-foreground"
+                                         tabindex="-1" data-orientation="vertical"
+                                         style="outline: none; display: inline-block">
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            فارسی</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Français</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Gallego</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            हिंदी</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Magyar</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Bahasa Indonesia</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Italiano</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Lietuvių</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            മലയാളം</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            मराठी</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Dutch</a>                                </div>
+                                    <div class="z-50 min-w-[8rem] overflow-hidden p-1 text-popover-foreground"
+                                         tabindex="-1" data-orientation="vertical"
+                                         style="outline: none; display: inline-block">
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Occitan</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Polski</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Português</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Português (Brasil)</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Русский</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Svenska</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            తెలుగు</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Türkçe</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Українська</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            简体中文</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+                        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 w-10 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round"
+                                 class="lucide lucide-sun h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0">
+                                <circle cx="12" cy="12" r="4"></circle>
+                                <path d="M12 2v2"></path>
+                                <path d="M12 20v2"></path>
+                                <path d="m4.93 4.93 1.41 1.41"></path>
+                                <path d="m17.66 17.66 1.41 1.41"></path>
+                                <path d="M2 12h2"></path>
+                                <path d="M20 12h2"></path>
+                                <path d="m6.34 17.66-1.41 1.41"></path>
+                                <path d="m19.07 4.93-1.41 1.41"></path>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round"
+                                 class="lucide lucide-moon absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100">
+                                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                            </svg>
+                            <span class="sr-only">Toggle theme</span></button>
+                    </div>
+                    <div class="md:hidden flex items-center space-x-2">
+                        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 w-10 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round"
+                                 class="lucide lucide-sun h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0">
+                                <circle cx="12" cy="12" r="4"></circle>
+                                <path d="M12 2v2"></path>
+                                <path d="M12 20v2"></path>
+                                <path d="m4.93 4.93 1.41 1.41"></path>
+                                <path d="m17.66 17.66 1.41 1.41"></path>
+                                <path d="M2 12h2"></path>
+                                <path d="M20 12h2"></path>
+                                <path d="m6.34 17.66-1.41 1.41"></path>
+                                <path d="m19.07 4.93-1.41 1.41"></path>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round"
+                                 class="lucide lucide-moon absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100">
+                                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                            </svg>
+                            <span class="sr-only">Toggle theme</span></button>
+                        <button class="text-foreground">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="lucide lucide-menu">
+                                <line x1="4" x2="20" y1="12" y2="12"></line>
+                                <line x1="4" x2="20" y1="6" y2="6"></line>
+                                <line x1="4" x2="20" y1="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- Header End -->
+
+        <section class="py-24 px-4">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-center bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Donate to support the development of Organic Maps</h2>
+                <div class="mt-16">
+                    <p class="text-xl md:text-2xl text-center mb-8 font-medium">Organic Maps app is free for everyone thanks to your <a href="https://donate.organicmaps.app/" class="text-primary">donations</a>
+                        in <a href="https://donate.organicmaps.app/?currency=eur" class="text-primary">EUR</a>,
+                        <a href="https://donate.organicmaps.app/?currency=usd" class="text-primary">USD</a>,
+                        <a href="https://donate.organicmaps.app/?currency=gpb" class="text-primary">GBP</a>,
+                        <a href="https://donate.organicmaps.app/?currency=chf" class="text-primary">CHF</a>,
+                        <a href="https://donate.organicmaps.app/?currency=uah" class="text-primary">UAH</a>,
+                        <a href="https://donate.organicmaps.app/?currency=pln" class="text-primary">PLN</a>:</p>
+                    <div class="grid md:grid-cols-2 gap-x-12 gap-y-3 max-w-2xl mx-auto">
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-2"><span class="text-primary mt-1">•</span><span>No ads</span></li>
+                            <li class="flex items-start gap-2"><span class="text-primary mt-1">•</span><span>No trackers</span></li>
+                            <li class="flex items-start gap-2"><span class="text-primary mt-1">•</span><span>No data collection</span></li>
+                            </li>
+                        </ul>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-2"><span class="text-primary mt-1">•</span><span>No registration</span></li>
+                            <li class="flex items-start gap-2"><span class="text-primary mt-1">•</span><span>No push notifications</span></li>
+                            <li class="flex items-start gap-2"><span class="text-primary mt-1">•</span><span>Open source</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="mx-auto max-w-4xl text-center text-xl text-muted-foreground mt-4 mb-4">Click on your preferred payment method icon below:</p>
+                <div class="flex justify-center gap-6 flex-wrap">
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/visa_mc.svg" alt="Visa"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">Visa</span></div>
+                    </div>
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/wise.svg" alt="Wise"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">Wise</span></div>
+                    </div>
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/google.svg" alt="Google"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">Google</span></div>
+                    </div>
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/paypal.svg" alt="PayPal"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">PayPal</span></div>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-6 flex-wrap mt-4">
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/giropay.svg" alt="Giropay"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">Giropay</span></div>
+                    </div>
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/ideal.svg" alt="iDeal"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">iDeal</span></div>
+                    </div>
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/sofort.svg" alt="Sofort"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">Sofort</span></div>
+                    </div>
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/sepa.svg" alt="SEPA"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">SEPA</span></div>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-6 flex-wrap mt-4">
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/bank.svg" alt="Bank Transfer"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">Bank Transfer</span></div>
+                    </div>
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/liberapay.svg" alt="LiberaPay"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">LiberaPay</span></div>
+                    </div>
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/github.svg" alt="Github Sponsors"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">Github</span></div>
+                    </div>
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/patreon.svg" alt="Patreon"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">Patreon</span></div>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-6 flex-wrap mt-4">
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/opencollective.svg" alt="OpenCollective"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">OpenCollective</span></div>
+                    </div>
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/bancontact.svg" alt="BanContact"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">BanContact</span></div>
+                    </div>
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/eps.svg" alt="EPS"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">EPS</span></div>
+                    </div>
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/bitcoin.svg" alt="Bitcoin"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">Bitcoin</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-12 px-4">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-12">Why donate to Organic Maps?</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6 text-center hover:shadow-lg transition-shadow duration-300">
+                        <div class="flex justify-center mb-4">
+                            <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="lucide lucide-shield w-8 h-8 text-primary">
+                                    <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Respects your privacy</h3>
+                        <p class="text-muted-foreground">Our goal is to provide a privacy-focused, fast and easy-to-use alternative to Google Maps and Apple Maps.</p>
+                    </div>
+                    <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6 text-center hover:shadow-lg transition-shadow duration-300">
+                        <div class="flex justify-center mb-4">
+                            <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="lucide lucide-battery w-8 h-8 text-primary">
+                                    <rect width="16" height="10" x="2" y="7" rx="2" ry="2"></rect>
+                                    <line x1="22" x2="22" y1="11" y2="13"></line>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Improve map data</h3>
+                        <p class="text-muted-foreground">Improving public map data for the numerous websites, apps and platforms which use OpenStreetMap, and involving more people in contributing map info is our other goal.</p>
+                    </div>
+                    <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6 text-center hover:shadow-lg transition-shadow duration-300">
+                        <div class="flex justify-center mb-4">
+                            <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="lucide lucide-wifi w-8 h-8 text-primary">
+                                    <path d="M12 20h.01"></path>
+                                    <path d="M2 8.82a15 15 0 0 1 20 0"></path>
+                                    <path d="M5 12.859a10 10 0 0 1 14 0"></path>
+                                    <path d="M8.5 16.429a5 5 0 0 1 7 0"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">No annoying ads</h3>
+                        <p class="text-muted-foreground">We rely on your donations to keep Organic Maps open and free for everyone. And free from ads.</p>
+                    </div>
+                    <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6 text-center hover:shadow-lg transition-shadow duration-300">
+                        <div class="flex justify-center mb-4">
+                            <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="lucide lucide-wifi w-8 h-8 text-primary">
+                                    <path d="M12 20h.01"></path>
+                                    <path d="M2 8.82a15 15 0 0 1 20 0"></path>
+                                    <path d="M5 12.859a10 10 0 0 1 14 0"></path>
+                                    <path d="M8.5 16.429a5 5 0 0 1 7 0"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Happy users</h3>
+                        <p class="text-muted-foreground">We love what we do, and we love our users ❤️.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-12 px-4">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-12">Why does a free project need money?</h2>
+                <div class="mt-16">
+                    <div class="max-w-2xl mx-auto">
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-2">
+                                <span class="text-primary mt-1">•</span>
+                                <span>In 2023, Organic Maps got its first million users. Our servers provide free, fast and frequent map updates all over the world.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-primary mt-1">•</span>
+                                <span>User support, bugfixing and publishing quality app updates are at the top of our priorities. There are ~2000 bug reports and feature requests on GitHub, and this number is growing every day. AppStore, Google Play, and support emails are overflooded with comments and bugs. We want to deliver a high-quality product.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-primary mt-1">•</span>
+                                <span>With enough money, new features can be developed. To name a few:</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <ul class="space-y-3 ml-8 list-circle">
+                                    <li>
+                                        <span class="flex items-start gap-2">Backup and sync bookmarks and tracks</span>
+                                    </li>
+                                    <li>
+                                        <span class="flex items-start gap-2">GPS track recorder with GPX export</span>
+                                    </li>
+                                    <li>
+                                        <span class="flex items-start gap-2">Satellite imagery</span>
+                                    </li>
+                                    <li>
+                                        <span class="flex items-start gap-2">Public Transport</span>
+                                    </li>
+                                    <li>
+                                        <span class="flex items-start gap-2">Traffic and accident reporting</span>
+                                    </li>
+                                    <li>
+                                        <span class="flex items-start gap-2">Photos and Reviews</span>
+                                    </li>
+                                    <li>
+                                        <span class="flex items-start gap-2">Map styles for different activities</span>
+                                    </li>
+                                    <li>
+                                        <span class="flex items-start gap-2">Hill shading and 3D terrain</span>
+                                    </li>
+                                    <li>
+                                        <span class="flex items-start gap-2">More advanced OpenStreetMap editor</span>
+                                    </li>
+                                    <li>
+                                        <span class="flex items-start gap-2">Better offline address search, routing, and navigation</span>
+                                    </li>
+                                    <li>
+                                        <span class="flex items-start gap-2">… and many other features you want and love</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-12 px-4">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-12">How to donate?</h2>
+                <p class="mx-auto max-w-4xl text-center text-xl text-muted-foreground mt-4 mb-4">Click on your preferred payment method icon below:</p>
+                <div class="flex justify-center gap-6 flex-wrap">
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/visa_mc.svg" alt="Visa"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">Visa</span></div>
+                    </div>
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/wise.svg" alt="Wise"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">Wise</span></div>
+                    </div>
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/google.svg" alt="Google"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">Google</span></div>
+                    </div>
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/paypal.svg" alt="PayPal"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">PayPal</span></div>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-6 flex-wrap mt-4">
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/giropay.svg" alt="Giropay"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">Giropay</span></div>
+                    </div>
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/ideal.svg" alt="iDeal"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">iDeal</span></div>
+                    </div>
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/sofort.svg" alt="Sofort"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">Sofort</span></div>
+                    </div>
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/sepa.svg" alt="SEPA"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">SEPA</span></div>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-6 flex-wrap mt-4">
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/bank.svg" alt="Bank Transfer"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">Bank Transfer</span></div>
+                    </div>
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/liberapay.svg" alt="LiberaPay"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">LiberaPay</span></div>
+                    </div>
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/github.svg" alt="Github Sponsors"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">Github</span></div>
+                    </div>
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/patreon.svg" alt="Patreon"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">Patreon</span></div>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-6 flex-wrap mt-4">
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/opencollective.svg" alt="OpenCollective"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">OpenCollective</span></div>
+                    </div>
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/bancontact.svg" alt="BanContact"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">BanContact</span></div>
+                    </div>
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/eps.svg" alt="EPS"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">EPS</span></div>
+                    </div>
+                    <div class="w-36 rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="images/donates/bitcoin.svg" alt="Bitcoin"
+                                 class="lucide lucide-credit-card w-12 h-12 text-blue-500 group-hover:scale-110 transition-transform"/>
+                            <span class="text-sm font-medium">Bitcoin</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-xl md:text-2xl text-center mt-4 font-medium">Bank Transfer</p>
+            <div class="grid md:grid-cols-2 gap-2 container mt-4 mb-4 mx-auto max-w-2xl">
+                <span>Account holder for all currencies:</span><span>Organic Maps OÜ</span>
+                <span>Payment description:</span><span>Donation</span>
+            </div>
+
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm mt-4 p-6 max-w-4xl mx-auto">
+                <h2 class="text-2xl font-semibold mb-3">EUR, Euro €</h2>
+                <div class="text-muted-foreground grid md:grid-cols-2 gap-2">
+                    <span>SWIFT/BIC:</span><span>TRWIBEB1XXX</span>
+                    <span>IBAN:</span><span>BE39 9672 0031 0319</span>
+                    <span>Bank name:</span><span>Wise</span>
+                    <span>Bank address:</span><span>Rue du Trône 100, 3rd floor, Brussels, 1050, Belgium</span>
+                </div>
+            </div>
+
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm mt-4 p-6 max-w-4xl mx-auto">
+                <h2 class="text-2xl font-semibold mb-3">USD, United States Dollar $</h2>
+                <div class="text-muted-foreground grid md:grid-cols-2 gap-2">
+                    <span>Receiving fee:</span><span>$4.14</span>
+                    <span>Bank Address:</span><span>30 W. 26th Street, Sixth Floor, New York NY 10010, United States</span>
+                    <span>AHC/Wire Routing number:</span><span>026073150</span>
+                    <span>Account number:</span><span>8312564881</span>
+                    <span>Account type:</span><span>Checking</span>
+                    <span>SWIFT/BIC:</span><span>CMFGUS33</span>
+                </div>
+            </div>
+
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm mt-4 p-6 max-w-4xl mx-auto">
+                <h2 class="text-2xl font-semibold mb-3">GBP, British Pound £</h2>
+                <div class="text-muted-foreground grid md:grid-cols-2 gap-2">
+                    <span>IBAN:</span><span>GB97 TRWI 2314 7092 7851 63</span>
+                    <span>Bank address:</span><span>56 Shoreditch High Street, London, E1 6JJ, United Kingdom</span>
+                    <span>Sort code:</span><span>23-14-70</span>
+                    <span>Account number:</span><span>92785163</span>
+                    <span>SWIFT/BIC:</span><span>TRWIGB2L</span>
+                </div>
+            </div>
+
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm mt-4 p-6 max-w-4xl mx-auto">
+                <h2 class="text-2xl font-semibold mb-3">Turkish lira (TL, TRY)</h2>
+                <div class="text-muted-foreground grid md:grid-cols-2 gap-2">
+                    <span>IBAN:</span><span>TR740010300000000047306089</span>
+                    <span>Ad Soyad:</span><span>Organic Maps OÜ (Birleşik Ödeme Hizmetleri ve Elektronik Para A.Ş)</span>
+                    <span>Açıklama:</span><span>Donation</span>
+                </div>
+            </div>
+
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm mt-4 p-6 max-w-6xl mx-auto">
+                <h2 class="text-2xl font-semibold mb-3">Crypto</h2>
+                <p class="mx-auto text-center text-xl text-muted-foreground mt-4 mb-4">Please consider donating annually to reduce total fees.</p>
+                <div class="text-muted-foreground grid gap-2" style="grid-template-columns: 1fr 1fr 2fr;">
+                    <span class="font-bold">Name</span><span class="font-bold">Token</span><span class="font-bold">Address</span>
+                    <span>Bitcoin</span><span>BTC</span><span>bc1qjkq3tpy2gutsfdlcvys8slkempywk230u8rc8u</span>
+                    <span>Ethereum</span><span>ETH</span><span>0x1D59bBe5d4332e34116DccDE5c1a8c736E1C2810</span>
+                    <span>Tether/ERC20</span><span>USDT</span><span>0x1D59bBe5d4332e34116DccDE5c1a8c736E1C2810</span>
+                    <span>Tron</span><span>TRX</span><span>TNQGZwAUCpwy1cuVSyu1vc6AT19nsmWqRF</span>
+                    <span>Tether/TRC20</span><span>USDT</span><span>TNQGZwAUCpwy1cuVSyu1vc6AT19nsmWqRF</span>
+                    <span>Litecoin</span><span>LTC</span><span>LfmSZ5yKBf17WwahZK9NEq5w2FLVap4Ctw</span>
+                    <span>Bitcoin Cash</span><span>BCH</span><span>qqcjkzf7nlgvhng5vhq7n7hjrcdqccyqlq9h7gq4xw</span>
+                    <span>Binance Coin</span><span>BNB</span><span>bnb1c8vmnqqhqc6lcajpzvuy4ss5dw3vjc7tc5q8zd</span>
+                    <span>Algorand</span><span>ALGO</span><span>3UZXZEPGFAM7E74IO32Y7O6KOY3E7NNNJVBV4GFS5UWQQSY7AIM5PK7C2E</span>
+                    <span>Cardano</span><span>ADA</span><span>addr1qxh59080ujswxuzapzrdvuzpglfktg09gq9q7dxpdl7jfka0g27wle9qudc96zyx6ecyz37nvks72sq2pu6vzmlayndsj02qhw</span>
+                    <span>XRP</span><span>XRP</span><span>rQ5hNeQKqiDVyNGgX9qhv5hdDETnsqNgy</span>
+                    <span>Solana</span><span>SOL</span><span>Eyv43vXxmSshDPReJnfMtrDspugsVR3S6PzJV38rMAZE</span>
+                    <span>ShibaINU/ERC20</span><span>SHIB</span><span>0x1D59bBe5d4332e34116DccDE5c1a8c736E1C2810</span>
+                    <span>Dogecoin</span><span>DOGE</span><span>DRdtRetmiSFHLkorNHyf4nL2MT375Xkmrm</span>
+                    <span>Monero</span><span>XMR</span><span>44YsnJihPB7TBucb17WiXDde7qguUwNmGKFSsyrFqWheEaDKQRtMfGcEU54aJ8PeQNgV7Q9uBWB5CTcvKSMEH4QtE6BT1cm</span>
+                    <span>ZCash</span><span>ZEC</span><span>t1djHnDg8yGfn6vLPrYgejUFf2ZCF4WMmkp</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-12 px-4">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-12">Can you help us in any other way?</h2>
+                <p class="mx-auto max-w-4xl text-center text-xl text-foreground mt-4 mb-4">Yes! There are many ways to support Organic Maps. Please see
+                    <a href="/contribute/" class="text-primary">Contribute</a> page for more details.</p>
+            </div>
+        </section>
+
+        <footer class="bg-card border-t border-border py-12">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                    <div class="col-span-1 md:col-span-2">
+                        <div class="flex items-center space-x-2 mb-4">
+                            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary">
+                                <img class="rounded-lg" src="images/android-chrome-512x512.png"/>
+                            </div>
+                            <span class="text-xl font-bold">Organic Maps</span></div>
+                        <p class="text-muted-foreground mb-4">© 2025 <a href="mailto:legal@organicmaps.app" class="text-foreground">Organic Maps OÜ</a>, reg. code 16225385<br/>
+                            Harju maakond, Tallinn, Kesklinna linnaosa, Rävala pst 8-810, 10143, Estonia</p>
+                        <div class="flex space-x-4"><a href="#"
+                                                       class="text-muted-foreground hover:text-primary transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="lucide lucide-twitter w-5 h-5">
+                                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                            </svg>
+                        </a><a href="#" class="text-muted-foreground hover:text-primary transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="lucide lucide-github w-5 h-5">
+                                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                                <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                            </svg>
+                        </a><a href="#" class="text-muted-foreground hover:text-primary transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="lucide lucide-mail w-5 h-5">
+                                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                            </svg>
+                        </a></div>
+                    </div>
+                    <div><h3 class="font-semibold mb-4">Quick Links</h3>
+                        <ul class="space-y-2">
+                            <li><a class="text-muted-foreground hover:text-foreground transition-colors" href="/news">News</a>
+                            </li>
+                            <li><a class="text-muted-foreground hover:text-foreground transition-colors"
+                                   href="/donations">Donations</a></li>
+                            <li><a class="text-muted-foreground hover:text-foreground transition-colors"
+                                   href="/privacy">Privacy</a></li>
+                            <li><a class="text-muted-foreground hover:text-foreground transition-colors"
+                                   href="/terms">Terms</a></li>
+                        </ul>
+                    </div>
+                    <div><h3 class="font-semibold mb-4">Connect</h3>
+                        <ul class="space-y-2">
+                            <li><a class="text-muted-foreground hover:text-foreground transition-colors" href="/contribute/">Contribute</a></li>
+                            <li><a class="text-muted-foreground hover:text-foreground transition-colors" href="https://omaps.app/api">API</a></li>
+                            <li><a class="text-muted-foreground hover:text-foreground transition-colors" href="mailto:hello@organicmaps.app">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+</body>
+</html>
