@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Maps - Navigate Your World</title>
+    <meta name="author" content="Organic Maps">
+
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index-2.css">
+</head>
+
+<body>
+<div id="root">
+    <div role="region" aria-label="Notifications (F8)" tabindex="-1" style="pointer-events: none;">
+        <ol tabindex="-1"
+            class="fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]"></ol>
+    </div>
+    <section aria-label="Notifications alt+T" tabindex="-1" aria-live="polite" aria-relevant="additions text"
+             aria-atomic="false"></section>
+    <div class="min-h-screen">
+        <!-- Header start -->
+        <nav class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
+            <div class="container mx-auto px-4">
+                <div class="flex items-center justify-between h-16"><a class="flex items-center space-x-2" href="/">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary">
+                        <img class="rounded-lg" src="images/android-chrome-512x512.png"/>
+                    </div>
+                    <span class="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Organic Maps</span></a>
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a class="text-foreground/80 hover:text-foreground transition-colors" href="/news">News</a>
+                        <a class="text-foreground/80 hover:text-foreground transition-colors" href="/donations">Donate</a>
+                        <a class="text-foreground/80 hover:text-foreground transition-colors" href="/contributions">Contribute</a>
+                        <a class="text-foreground/80 hover:text-foreground transition-colors" href="/contacts">F.A.Q.</a>
+                        <a class="text-foreground/80 hover:text-foreground transition-colors" href="/contacts">GitHub</a>
+                        <button class="items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 w-12 lang-dropdown"
+                                type="button" style="display: inline-block">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 style="display: inline"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="lucide lucide-globe h-5 w-5">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                                <path d="M2 12h20"></path>
+                            </svg>
+                            <span>EN</span>
+                            <div style="position: relative; left: -200px; top: 10px; min-width: max-content;" class="langs-list z-50">
+                                <div id="columns" style="display: inline-block" class="rounded-md border bg-popover shadow-md">
+                                    <div class="z-50 min-w-[8rem] overflow-hidden p-1 text-popover-foreground"
+                                         tabindex="-1" data-orientation="vertical"
+                                         style="outline: none; display: inline-block">
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground bg-accent">
+                                            English</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Afrikaans</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            العربية</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Català</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Čeština</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Cymraeg</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Deutsch</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Ελληνικά</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Español</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Eesti</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Euskara</a>                                </div>
+                                    <div class="z-50 min-w-[8rem] overflow-hidden p-1 text-popover-foreground"
+                                         tabindex="-1" data-orientation="vertical"
+                                         style="outline: none; display: inline-block">
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            فارسی</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Français</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Gallego</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            हिंदी</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Magyar</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Bahasa Indonesia</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Italiano</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Lietuvių</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            മലയാളം</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            मराठी</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Dutch</a>                                </div>
+                                    <div class="z-50 min-w-[8rem] overflow-hidden p-1 text-popover-foreground"
+                                         tabindex="-1" data-orientation="vertical"
+                                         style="outline: none; display: inline-block">
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Occitan</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Polski</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Português</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Português (Brasil)</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Русский</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Svenska</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            తెలుగు</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Türkçe</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            Українська</a>
+                                        <a href="#" role="menuitem"
+                                           class="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground">
+                                            简体中文</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+                        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 w-10 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round"
+                                 class="lucide lucide-sun h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0">
+                                <circle cx="12" cy="12" r="4"></circle>
+                                <path d="M12 2v2"></path>
+                                <path d="M12 20v2"></path>
+                                <path d="m4.93 4.93 1.41 1.41"></path>
+                                <path d="m17.66 17.66 1.41 1.41"></path>
+                                <path d="M2 12h2"></path>
+                                <path d="M20 12h2"></path>
+                                <path d="m6.34 17.66-1.41 1.41"></path>
+                                <path d="m19.07 4.93-1.41 1.41"></path>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round"
+                                 class="lucide lucide-moon absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100">
+                                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                            </svg>
+                            <span class="sr-only">Toggle theme</span></button>
+                    </div>
+                    <div class="md:hidden flex items-center space-x-2">
+                        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 w-10 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round"
+                                 class="lucide lucide-sun h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0">
+                                <circle cx="12" cy="12" r="4"></circle>
+                                <path d="M12 2v2"></path>
+                                <path d="M12 20v2"></path>
+                                <path d="m4.93 4.93 1.41 1.41"></path>
+                                <path d="m17.66 17.66 1.41 1.41"></path>
+                                <path d="M2 12h2"></path>
+                                <path d="M20 12h2"></path>
+                                <path d="m6.34 17.66-1.41 1.41"></path>
+                                <path d="m19.07 4.93-1.41 1.41"></path>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round"
+                                 class="lucide lucide-moon absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100">
+                                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                            </svg>
+                            <span class="sr-only">Toggle theme</span></button>
+                        <button class="text-foreground">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="lucide lucide-menu">
+                                <line x1="4" x2="20" y1="12" y2="12"></line>
+                                <line x1="4" x2="20" y1="6" y2="6"></line>
+                                <line x1="4" x2="20" y1="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- Header End -->
+
+        <section class="py-24 px-4">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-center bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Support the development of Organic Maps</h2>
+                <p class="text-lg text-muted-foreground max-w-4xl text-center mx-auto mb-4 mt-4">Organic Maps is a free, open-source app. It is free from ads, it does not collect your personal
+                    information, and it is developed by a few enthusiasts with the help of the community.</p>
+                <div class="max-w-6xl mx-auto">
+                    <h2 class="text-3xl font-semibold mb-8 text-center text-muted-foreground">There are different ways to support the development:</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-glow border-l-4 border-l-primary">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                         stroke-linejoin="round" class="lucide lucide-dollar-sign w-5 h-5 text-primary">
+                                        <line x1="12" x2="12" y1="2" y2="22"></line>
+                                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                    </svg>
+                                </div>
+                                <p class="text-muted-foreground"><a href="#" class="text-primary">Donate!</a> Every dollar or euro counts and helps us to pay
+                                    for servers and scale.</p></div>
+                        </div>
+                        <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-glow border-l-4 border-l-primary">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                         stroke-linejoin="round" class="lucide lucide-bug w-5 h-5 text-primary">
+                                        <path d="m8 2 1.88 1.88"></path>
+                                        <path d="M14.12 3.88 16 2"></path>
+                                        <path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"></path>
+                                        <path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"></path>
+                                        <path d="M12 20v-9"></path>
+                                        <path d="M6.53 9C4.6 8.8 3 7.1 3 5"></path>
+                                        <path d="M6 13H2"></path>
+                                        <path d="M3 21c0-2.1 1.7-3.9 3.8-4"></path>
+                                        <path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"></path>
+                                        <path d="M22 13h-4"></path>
+                                        <path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"></path>
+                                    </svg>
+                                </div>
+                                <p class="text-muted-foreground">Report bugs and share ideas on our <a href="https://github.com/organicmaps/organicmaps" class="text-primary">GitHub</a> or via
+                                    <a href="mailto:support@organicmaps.app" class="text-primary">email</a>.</p></div>
+                        </div>
+                        <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-glow border-l-4 border-l-primary">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                         stroke-linejoin="round" class="lucide lucide-code w-5 h-5 text-primary">
+                                        <polyline points="16 18 22 12 16 6"></polyline>
+                                        <polyline points="8 6 2 12 8 18"></polyline>
+                                    </svg>
+                                </div>
+                                <p class="text-muted-foreground">Help us to <a href="https://github.com/organicmaps/organicmaps/blob/master/docs/CONTRIBUTING.md" class="text-primary">fix bugs</a> and do code reviews if you are a
+                                    developer. Every fixed small issue makes someone happier.</p></div>
+                        </div>
+                        <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-glow border-l-4 border-l-primary">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                         stroke-linejoin="round" class="lucide lucide-globe w-5 h-5 text-primary">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                                        <path d="M2 12h20"></path>
+                                    </svg>
+                                </div>
+                                <p class="text-muted-foreground"><a href="https://github.com/organicmaps/organicmaps/blob/master/docs/TRANSLATIONS.md" class="text-primary">Translate</a>
+                                    missing strings in the app's interface, <a href="https://hosted.weblate.org/projects/organicmaps/website/" class="text-primary">website</a>,
+                                    app description in <a href="https://hosted.weblate.org/projects/organicmaps/apple-appstore-metadata/" class="text-primary">App Store</a> and
+                                    <a href="https://hosted.weblate.org/projects/organicmaps/fdroid-metadata/" class="text-primary">Android markets</a> into your language.</p>
+                            </div>
+                        </div>
+                        <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-glow border-l-4 border-l-primary">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                         stroke-linejoin="round" class="lucide lucide-map-pin w-5 h-5 text-primary">
+                                        <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                </div>
+                                <p class="text-muted-foreground">Join the
+                                    <a href="https://www.openstreetmap.org/about" class="text-primary">OpenStreetMap</a> community and contribute to the maps data.</p>
+                            </div>
+                        </div>
+                        <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-glow border-l-4 border-l-primary">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                         stroke-linejoin="round"
+                                         class="lucide lucide-circle-check-big w-5 h-5 text-primary">
+                                        <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
+                                        <path d="m9 11 3 3L22 4"></path>
+                                    </svg>
+                                </div>
+                                <p class="text-muted-foreground">Fix red cities found by our <a href="https://cdn.organicmaps.app/subway/" class="text-primary">public transport validator</a>,
+                                    for subways and light rails to work in the app.</p></div>
+                        </div>
+                        <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-glow border-l-4 border-l-primary">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                         stroke-linejoin="round" class="lucide lucide-users w-5 h-5 text-primary">
+                                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="9" cy="7" r="4"></circle>
+                                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                    </svg>
+                                </div>
+                                <p class="text-muted-foreground">Support other users on <a href="https://github.com/organicmaps/organicmaps/issues" class="text-primary">GitHub</a>,
+                                    <a href="https://t.me/OrganicMaps" class="text-primary">Telegram</a>, <a href="https://matrix.to/#/#organicmaps:matrix.org" class="text-primary">Matrix</a>,
+                                    <a href="https://twitter.com/OrganicMapsApp" class="text-primary">Twitter</a>, <a href="https://facebook.com/OrganicMaps" class="text-primary">Facebook</a>,
+                                    <a href="https://bsky.app/profile/organicmaps.bsky.social" class="text-primary">Bluesky</a>,
+                                    <a href="https://instagram.com/organicmaps.app/" class="text-primary">Instagram</a>.</p></div>
+                        </div>
+                        <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-glow border-l-4 border-l-primary">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                         stroke-linejoin="round"
+                                         class="lucide lucide-message-square w-5 h-5 text-primary">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                    </svg>
+                                </div>
+                                <p class="text-muted-foreground">Tell everyone about Organic Maps. A bigger community is
+                                    a stronger community.</p></div>
+                        </div>
+                        <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-glow border-l-4 border-l-primary">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                         stroke-linejoin="round" class="lucide lucide-star w-5 h-5 text-primary">
+                                        <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                                    </svg>
+                                </div>
+                                <p class="text-muted-foreground">Rate us in <a href="market://details?id=app.organicmaps" class="text-primary">Google Play</a>,
+                                    <a href="https://itunes.apple.com/app/id1567437057?action=write-review" class="text-primary">Apple Store</a>,
+                                    <a href="appmarket://details?id=app.organicmaps" class="text-primary">Huawei Appgallery</a>.</p></div>
+                        </div>
+                        <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-glow border-l-4 border-l-primary">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                         stroke-linejoin="round" class="lucide lucide-heart w-5 h-5 text-primary">
+                                        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                                    </svg>
+                                </div>
+                                <p class="text-muted-foreground">Any help is welcome!</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-card border-t border-border py-12">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                    <div class="col-span-1 md:col-span-2">
+                        <div class="flex items-center space-x-2 mb-4">
+                            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary">
+                                <img class="rounded-lg" src="images/android-chrome-512x512.png"/>
+                            </div>
+                            <span class="text-xl font-bold">Organic Maps</span></div>
+                        <p class="text-muted-foreground mb-4">© 2025 <a href="mailto:legal@organicmaps.app" class="text-foreground">Organic Maps OÜ</a>, reg. code 16225385<br/>
+                            Harju maakond, Tallinn, Kesklinna linnaosa, Rävala pst 8-810, 10143, Estonia</p>
+                        <div class="flex space-x-4"><a href="#"
+                                                       class="text-muted-foreground hover:text-primary transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="lucide lucide-twitter w-5 h-5">
+                                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                            </svg>
+                        </a><a href="#" class="text-muted-foreground hover:text-primary transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="lucide lucide-github w-5 h-5">
+                                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                                <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                            </svg>
+                        </a><a href="#" class="text-muted-foreground hover:text-primary transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="lucide lucide-mail w-5 h-5">
+                                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                            </svg>
+                        </a></div>
+                    </div>
+                    <div><h3 class="font-semibold mb-4">Quick Links</h3>
+                        <ul class="space-y-2">
+                            <li><a class="text-muted-foreground hover:text-foreground transition-colors" href="/news">News</a>
+                            </li>
+                            <li><a class="text-muted-foreground hover:text-foreground transition-colors"
+                                   href="/donations">Donations</a></li>
+                            <li><a class="text-muted-foreground hover:text-foreground transition-colors"
+                                   href="/privacy">Privacy</a></li>
+                            <li><a class="text-muted-foreground hover:text-foreground transition-colors"
+                                   href="/terms">Terms</a></li>
+                        </ul>
+                    </div>
+                    <div><h3 class="font-semibold mb-4">Connect</h3>
+                        <ul class="space-y-2">
+                            <li><a class="text-muted-foreground hover:text-foreground transition-colors" href="/contribute/">Contribute</a></li>
+                            <li><a class="text-muted-foreground hover:text-foreground transition-colors" href="https://omaps.app/api">API</a></li>
+                            <li><a class="text-muted-foreground hover:text-foreground transition-colors" href="mailto:hello@organicmaps.app">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+</body>
+</html>

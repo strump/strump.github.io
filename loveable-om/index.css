@@ -1396,6 +1396,10 @@ body {
     border-left-width: 4px
 }
 
+.border-l-primary {
+    border-left-color: hsl(var(--primary));
+}
+
 .border-r {
     border-right-width: 1px
 }
@@ -3317,7 +3321,7 @@ body {
 
     .md\:text-5xl {
         font-size: 3rem;
-        line-height: 1
+        line-height: normal;
     }
 
     .md\:text-7xl {
