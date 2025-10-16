@@ -577,3 +577,22 @@
 .lang-dropdown:hover .langs-list{
     display: block;
 }
+
+.hover\:text-accent-foreground:hover img.icon-hover-white {
+    filter: invert(100%) sepia(40%) saturate(3084%) hue-rotate(182deg) brightness(106%) contrast(103%);
+}
+
+.icon-white {
+    filter: invert(100%) sepia(40%) saturate(3084%) hue-rotate(182deg) brightness(106%) contrast(103%);
+}
+
+/* https://codepen.io/sosuke/pen/Pjoqqp */
+.icon-green {
+    /* filter to convert black to #4B9F54 */
+    filter: invert(60%) sepia(13%) saturate(1788%) hue-rotate(75deg) brightness(87%) contrast(86%);
+}
+
+.icon-grey {
+    /* filter to convert black to #65758B*/
+    filter: invert(51%) sepia(28%) saturate(339%) hue-rotate(175deg) brightness(82%) contrast(87%);
+}
