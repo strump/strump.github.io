@@ -56,4 +56,6 @@ function init_listeners() {
     }
 
     document.getElementById("keys_quick_filter").addEventListener("input", update_rows_visibility);
+    update_rows_visibility();
+    update_columns_visibility();
 }
