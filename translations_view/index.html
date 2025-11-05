@@ -32,7 +32,10 @@
     #columns_filter .column_check,
     #tags_filter .tag_check {
         display: inline;
-        padding-right: 3px;
+        margin-right: 3px;
+    }
+    .filter_form label {
+        margin-left: -6px;
     }
     </style>
     <script src="filters.js"></script>
@@ -93,6 +96,10 @@
             <label for="tag_apple-infoplist"><code>apple-infoplist</code></label>
         </div>
     </div>
+    <div id="keys_filter">
+        <div>Keys quick filter:</div>
+        <input type="text" id="keys_quick_filter" name="keys_quick_filter" value="" />
+    </div>
 </div>
 
 <table class="translations">
@@ -129,15 +136,12 @@
 <style id="columns_style">
 /*.translations td[data-twine-lang="tags"] {
     display: none;
-}
-.translations th[data-twine-lang="tags"] {
-    display: none;
 }*/
 </style>
 
-<style id="tags_style">
+<style id="rows_style">
 /*.translations tr[data-twine-tags*=",apple-maps,"] {
-    display: none;
+    display: table-row;
 }*/
 </style>
 
