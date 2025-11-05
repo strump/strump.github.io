@@ -26,7 +26,11 @@
     .filter_form {
         padding: 10px;
     }
-    #columns_filter .column_check {
+    #tags_filter, #columns_filter {
+        margin-top: 3px;
+    }
+    #columns_filter .column_check,
+    #tags_filter .tag_check {
         display: inline;
         padding-right: 3px;
     }
@@ -46,7 +50,7 @@
             <label for="col_comment">Comment</label>
         </div>
         <div class="column_check">
-            <input type="checkbox" id="col_tags" name="col_tags" />
+            <input type="checkbox" id="col_tags" name="col_tags" checked />
             <label for="col_tags">tags</label>
         </div>
         <div class="column_check">
@@ -58,34 +62,65 @@
             <label for="col_ru">Russian (ru)</label>
         </div>
     </div>
+    <div id="tags_filter">
+        <div>Tags:</div>
+        <div class="tag_check">
+            <input type="checkbox" id="tag_android" name="tag_android" checked />
+            <label for="tag_android"><code>android</code></label>
+        </div>
+        <div class="tag_check">
+            <input type="checkbox" id="tag_android-app" name="tag_android-app" checked />
+            <label for="tag_android-app"><code>android-app</code></label>
+        </div>
+        <div class="tag_check">
+            <input type="checkbox" id="tag_android-sdk" name="tag_android-sdk" checked />
+            <label for="tag_android-sdk"><code>android-sdk</code></label>
+        </div>
+        <div class="tag_check">
+            <input type="checkbox" id="tag_apple" name="tag_apple" checked />
+            <label for="tag_apple"><code>apple</code></label>
+        </div>
+        <div class="tag_check">
+            <input type="checkbox" id="tag_apple-maps" name="tag_apple-maps" checked />
+            <label for="tag_apple-maps"><code>apple-maps</code></label>
+        </div>
+        <div class="tag_check">
+            <input type="checkbox" id="tag_apple-chart" name="tag_apple-chart" checked />
+            <label for="tag_apple-chart"><code>apple-chart</code></label>
+        </div>
+        <div class="tag_check">
+            <input type="checkbox" id="tag_apple-infoplist" name="tag_apple-infoplist" checked />
+            <label for="tag_apple-infoplist"><code>apple-infoplist</code></label>
+        </div>
+    </div>
 </div>
 
 <table class="translations">
-    <tr>
+    <tr class="header">
         <th>Keys</th>
         <th data-twine-lang="comment">Comment</th>
         <th data-twine-lang="tags">tags</th>
         <th data-twine-lang="en">English (en)</th>
         <th data-twine-lang="ru">Russian (ru)</th>
     </tr>
-    <tr data-twine-key="settings" data-twine-tags="android,android-app,apple,apple-maps">
+    <tr data-twine-key="settings" data-twine-tags=",android,android-app,apple,apple-maps,">
         <td><code>settings</code></td>
         <td data-twine-lang="comment">Settings button in system menu</td>
         <td data-twine-lang="tags">android, android-app, apple, apple-maps</td>
         <td data-twine-lang="en">Settings</td>
         <td data-twine-lang="ru">Настройки</td>
     </tr>
-    <tr data-twine-key="maps_storage" data-twine-tags="android,android-app">
+    <tr data-twine-key="maps_storage" data-twine-tags=",android,android-app,">
         <td><code>maps_storage</code></td>
         <td data-twine-lang="comment">Settings button in system menu</td>
         <td data-twine-lang="tags">android, android-app</td>
         <td data-twine-lang="en">Save maps to</td>
         <td data-twine-lang="ru">Сохранять карты в</td>
     </tr>
-    <tr data-twine-key="leave_a_review" data-twine-tags="apple,apple-maps">
+    <tr data-twine-key="leave_a_review" data-twine-tags=",apple,apple-chart,">
         <td><code>leave_a_review</code></td>
         <td data-twine-lang="comment">Leave Review dialog - Review button</td>
-        <td data-twine-lang="tags">apple, apple-maps</td>
+        <td data-twine-lang="tags">apple, apple-chart</td>
         <td data-twine-lang="en">Leave a Review</td>
         <td data-twine-lang="ru">Написать отзыв</td>
     </tr>
@@ -97,8 +132,14 @@
 }
 .translations th[data-twine-lang="tags"] {
     display: none;
-}
-*/</style>
+}*/
+</style>
+
+<style id="tags_style">
+/*.translations tr[data-twine-tags*=",apple-maps,"] {
+    display: none;
+}*/
+</style>
 
 </body>
 </html>
