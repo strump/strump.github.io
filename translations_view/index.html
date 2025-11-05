@@ -1,0 +1,104 @@
+<html>
+<head>
+    <title>Organic Maps - Translations</title>
+    <style>
+    * {
+        font-family: Arial;
+    }
+
+    table.translations {
+        border-collapse: collapse;
+        margin: 10px;
+    }
+    .translations tr:nth-child(even) {
+        background: #F0FFFF;
+    }
+    .translations th {
+        background: #EEE;
+        border: 1px solid grey;
+    }
+    .translations td {
+        border: 1px solid grey;
+        padding: 5px;
+    }
+
+    /* Filters */
+    .filter_form {
+        padding: 10px;
+    }
+    #columns_filter .column_check {
+        display: inline;
+        padding-right: 3px;
+    }
+    </style>
+    <script src="filters.js"></script>
+    <script language="javascript">
+    document.addEventListener('DOMContentLoaded', init_listeners);
+    </script>
+</head>
+<body>
+
+<div class="filter_form">
+    <div id="columns_filter">
+        <div>Columns:</div>
+        <div class="column_check">
+            <input type="checkbox" id="col_comment" name="col_comment" checked />
+            <label for="col_comment">Comment</label>
+        </div>
+        <div class="column_check">
+            <input type="checkbox" id="col_tags" name="col_tags" />
+            <label for="col_tags">tags</label>
+        </div>
+        <div class="column_check">
+            <input type="checkbox" id="col_en" name="col_en" checked />
+            <label for="col_en">English (en)</label>
+        </div>
+        <div class="column_check">
+            <input type="checkbox" id="col_ru" name="col_ru" checked />
+            <label for="col_ru">Russian (ru)</label>
+        </div>
+    </div>
+</div>
+
+<table class="translations">
+    <tr>
+        <th>Keys</th>
+        <th data-twine-lang="comment">Comment</th>
+        <th data-twine-lang="tags">tags</th>
+        <th data-twine-lang="en">English (en)</th>
+        <th data-twine-lang="ru">Russian (ru)</th>
+    </tr>
+    <tr data-twine-key="settings" data-twine-tags="android,android-app,apple,apple-maps">
+        <td><code>settings</code></td>
+        <td data-twine-lang="comment">Settings button in system menu</td>
+        <td data-twine-lang="tags">android, android-app, apple, apple-maps</td>
+        <td data-twine-lang="en">Settings</td>
+        <td data-twine-lang="ru">Настройки</td>
+    </tr>
+    <tr data-twine-key="maps_storage" data-twine-tags="android,android-app">
+        <td><code>maps_storage</code></td>
+        <td data-twine-lang="comment">Settings button in system menu</td>
+        <td data-twine-lang="tags">android, android-app</td>
+        <td data-twine-lang="en">Save maps to</td>
+        <td data-twine-lang="ru">Сохранять карты в</td>
+    </tr>
+    <tr data-twine-key="leave_a_review" data-twine-tags="apple,apple-maps">
+        <td><code>leave_a_review</code></td>
+        <td data-twine-lang="comment">Leave Review dialog - Review button</td>
+        <td data-twine-lang="tags">apple, apple-maps</td>
+        <td data-twine-lang="en">Leave a Review</td>
+        <td data-twine-lang="ru">Написать отзыв</td>
+    </tr>
+</table>
+
+<style id="columns_style">
+/*.translations td[data-twine-lang="tags"] {
+    display: none;
+}
+.translations th[data-twine-lang="tags"] {
+    display: none;
+}
+*/</style>
+
+</body>
+</html>
