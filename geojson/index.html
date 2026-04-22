@@ -7,10 +7,13 @@
 <link href="https://api.mapbox.com/mapbox-gl-js/v3.21.0/mapbox-gl.css" rel="stylesheet">
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.21.0/mapbox-gl.js"></script>
 <style>
-body { margin: 0; padding: 0; }
-#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+body {
+    margin: 0; padding: 0;
+}
+#map {
+    position: absolute; top: 0; bottom: 0; width: 100%;
+}
 .dragover {
-    /* filter: saturate(50%); */
     filter: brightness(50%);
 }
 </style>
@@ -35,7 +38,7 @@ body { margin: 0; padding: 0; }
           }
         },
         projection: 'globe', // display the map as a globe
-        zoom: 1, // initial zoom level, 0 is the world view, higher values zoom in
+        zoom: 3, // initial zoom level, 0 is the world view, higher values zoom in
         center: [30, 15] // center the map on this longitude and latitude
     });
 
@@ -44,6 +47,60 @@ body { margin: 0; padding: 0; }
 
     map.on('style.load', () => {
         map.setFog({}); // Set the default atmosphere style
+    });
+
+    let hoveredPolygonId = null;
+
+    map.on('load', () => {
+        // When the user moves their mouse over the state-fill layer, we'll update the
+        // feature state for the feature under the mouse.
+        map.on('mousemove', 'geojson-drop-polygons', (e) => {
+            if (e.features.length > 0) {
+                if (hoveredPolygonId !== null) {
+                    map.setFeatureState(
+                        { source: 'geojson-drop', id: hoveredPolygonId },
+                        { hover: false }
+                    );
+                }
+                hoveredPolygonId = e.features[0].id;
+                map.setFeatureState(
+                    { source: 'geojson-drop', id: hoveredPolygonId },
+                    { hover: true }
+                );
+            }
+        });
+
+        // When the mouse leaves the state-fill layer, update the feature state of the
+        // previously hovered feature.
+        map.on('mouseleave', 'geojson-drop-polygons', () => {
+            if (hoveredPolygonId !== null) {
+                map.setFeatureState(
+                    { source: 'geojson-drop', id: hoveredPolygonId },
+                    { hover: false }
+                );
+            }
+            hoveredPolygonId = null;
+        });
+    });
+
+    const mapDiv = document.getElementById("map");
+
+    // Set drag-n-drop
+    mapDiv.addEventListener("drop", dropHandler);
+    mapDiv.addEventListener("dragover", (e) => {
+        //console.log("gradover");
+        mapDiv.classList.add("dragover");
+          const fileItems = [...e.dataTransfer.items].filter(
+            (item) => item.kind === "file",
+          );
+          if (fileItems.length > 0) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = "copy";
+        }
+    });
+    mapDiv.addEventListener("dragleave", (e) => {
+        console.log("dragleave");
+        mapDiv.classList.remove("dragover");
     });
 
 
@@ -56,43 +113,51 @@ body { margin: 0; padding: 0; }
 
         const file = event.dataTransfer.items[0].getAsFile();
         file.text().then((geojsonData) => {
+            if (map.getSource('geojson-drop')) {
+                map.removeLayer('geojson-drop-polygons');
+                map.removeLayer('geojson-drop-labels');
+                map.removeSource('geojson-drop');
+            }
+
+            // Add new layed from raw GeoJson string
             map.addSource('geojson-drop', {
                 type: 'geojson',
-                // Use a URL for the value for the `data` property.
                 data: JSON.parse(geojsonData)
             });
 
             map.addLayer({
-                'id': 'earthquakes-layer',
+                'id': 'geojson-drop-polygons',
                 'type': 'fill',
                 'source': 'geojson-drop',
                 'paint': {
-                    "fill-color": "#00ffff"
+                    "fill-color": ['get', 'fill'],
+                    'fill-opacity': [
+                        'case',
+                        ['boolean', ['feature-state', 'hover'], false],
+                        1,
+                        ['get', 'fill-opacity']
+                    ]
                 }
+            });
+
+            map.addLayer({
+                'id': 'geojson-drop-labels',
+                'type': 'symbol',
+                'source': 'geojson-drop',
+                'paint': {
+                    'text-color': 'black',
+                    'text-halo-width': 1,
+                    'text-halo-color': 'white'
+                },
+                'layout': {
+                    // Pulls text from the 'label' property
+                    'text-field': [ 'format', ['get', 'label'], '\n', ['get', 'percent'], '%'],
+                    'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+                    'text-size': 14
+                },
             });
         })
     }
-    //const dropZone = document.getElementById("map");
-    const mapDiv = document.getElementById("map");
-    const dropZone = mapDiv;
-
-    dropZone.addEventListener("drop", dropHandler);
-    dropZone.addEventListener("dragover", (e) => {
-        //console.log("gradover");
-        mapDiv.classList.add("dragover");
-          const fileItems = [...e.dataTransfer.items].filter(
-            (item) => item.kind === "file",
-          );
-          if (fileItems.length > 0) {
-            e.preventDefault();
-            e.dataTransfer.dropEffect = "copy";
-        }
-    });
-    dropZone.addEventListener("dragleave", (e) => {
-        console.log("dragleave");
-        mapDiv.classList.remove("dragover");
-    });
-
 </script>
 
 </body>
