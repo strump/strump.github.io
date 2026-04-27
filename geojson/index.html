@@ -116,6 +116,7 @@ body {
             if (map.getSource('geojson-drop')) {
                 map.removeLayer('geojson-drop-polygons');
                 map.removeLayer('geojson-drop-labels');
+                map.removeLayer('geojson-drop-lines');
                 map.removeSource('geojson-drop');
             }
 
@@ -151,10 +152,20 @@ body {
                 },
                 'layout': {
                     // Pulls text from the 'label' property
-                    'text-field': [ 'format', ['get', 'label'], '\n', ['get', 'percent'], '%'],
+                    'text-field': [ 'format', ['get', 'label'], '\n', ['get', 'percent'], '%\n#', ['get', 'osm_id']],
                     'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
                     'text-size': 14
                 },
+            });
+
+            map.addLayer({
+                'id': 'geojson-drop-lines',
+                'type': 'line',
+                'source': 'geojson-drop',
+                'paint': {
+                    'line-color': '#000',
+                    'line-width': 0.5
+                }
             });
         })
     }
