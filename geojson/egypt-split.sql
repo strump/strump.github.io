@@ -75,7 +75,7 @@ select id, id as osm_id, label, '#312E81' as fill, (num_objects*0.8/973570) as "
        num_objects, round(100 * num_objects / 5716441, 0) as percent, geometry
 from objects_by_region
 
-) TO 'borders.geojson' WITH (FORMAT GDAL, DRIVER GeoJSON, LAYER_CREATION_OPTIONS 'ID_FIELD=id');
+) TO 'egypt-borders.geojson' WITH (FORMAT GDAL, DRIVER GeoJSON, LAYER_CREATION_OPTIONS 'ID_FIELD=id');
 
 
 select kind, count(*)
