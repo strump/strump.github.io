@@ -377,7 +377,7 @@ SELECT egypt_regions.mwm_group_id, count(objects.*) as num_objects, egypt_region
  GROUP BY egypt_regions.mwm_group_id, egypt_regions.geometry
 )
 
-select mwm_group_id as id, mwm_group_id as osm_id, ('Zone ' || mwm_group_id) as label, '#512E5F' as fill, (num_objects*0.8/2389655) as "fill-opacity",
+select mwm_group_id as id, mwm_group_id as osm_id, ('Zone ' || mwm_group_id) as label, '#512E5F' as fill, (num_objects*0.8/2480628) as "fill-opacity",
        num_objects, round(100 * num_objects / 5716441, 0) as percent, geometry
 from objects_by_region
 

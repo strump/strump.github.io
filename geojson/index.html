@@ -25,7 +25,6 @@ body {
     const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/standard', // Use the standard style for the map
-        // style: 'mapbox://styles/mapbox/light-v11',
         config: {
           basemap: {
             lightPreset: "day",
@@ -43,7 +42,6 @@ body {
     });
 
     map.addControl(new mapboxgl.NavigationControl());
-    //map.scrollZoom.disable();
 
     map.on('style.load', () => {
         map.setFog({}); // Set the default atmosphere style
@@ -88,7 +86,7 @@ body {
     // Set drag-n-drop
     mapDiv.addEventListener("drop", dropHandler);
     mapDiv.addEventListener("dragover", (e) => {
-        //console.log("gradover");
+        // Dim the map a little when file is dragged over it
         mapDiv.classList.add("dragover");
           const fileItems = [...e.dataTransfer.items].filter(
             (item) => item.kind === "file",
@@ -99,7 +97,7 @@ body {
         }
     });
     mapDiv.addEventListener("dragleave", (e) => {
-        console.log("dragleave");
+        // Restore map style
         mapDiv.classList.remove("dragover");
     });
 
@@ -109,11 +107,10 @@ body {
         console.log("Dropped file");
         mapDiv.classList.remove("dragover");
 
-        console.log(map.getConfig('basemap'));
-
         const file = event.dataTransfer.items[0].getAsFile();
         file.text().then((geojsonData) => {
             if (map.getSource('geojson-drop')) {
+                // Remove data source if it's there
                 map.removeLayer('geojson-drop-polygons');
                 map.removeLayer('geojson-drop-labels');
                 map.removeLayer('geojson-drop-lines');
@@ -126,6 +123,7 @@ body {
                 data: JSON.parse(geojsonData)
             });
 
+            // Add layer or polygons with opacity
             map.addLayer({
                 'id': 'geojson-drop-polygons',
                 'type': 'fill',
@@ -141,6 +139,7 @@ body {
                 }
             });
 
+            // Add labels with title, data share and ID
             map.addLayer({
                 'id': 'geojson-drop-labels',
                 'type': 'symbol',
@@ -158,6 +157,7 @@ body {
                 },
             });
 
+            // Add zones edges
             map.addLayer({
                 'id': 'geojson-drop-lines',
                 'type': 'line',
