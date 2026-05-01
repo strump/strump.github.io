@@ -90,34 +90,34 @@ DROP TABLE IF EXISTS region_to_mwm;
 CREATE TABLE region_to_mwm AS (
   SELECT *
     FROM VALUES
-    ('3060792', 'Zone B'),
-    ('3060793', 'Zone B'),
-    ('3061757', 'Zone C'),
-    ('3061758', 'Zone C'),
-    ('3061826', 'Zone A'),
-    ('3061827', 'Zone C'),
-    ('3061846', 'Zone A'),
-    ('3062184', 'Zone B'),
-    ('3062185', 'Zone B'),
-    ('3584607', 'Zone A'),
-    ('3726124', 'Zone D'),
-    ('3726170', 'Zone D'),
-    ('3726175', 'Zone D'),
-    ('3726184', 'Zone C'),
-    ('3726186', 'Zone C'),
-    ('3726189', 'Zone C'),
-    ('3726211', 'Zone C'),
-    ('3824206', 'Zone D'),
-    ('3824207', 'Zone A'),
-    ('3824513', 'Zone A'),
-    ('4103336', 'Zone D'),
-    ('4103337', 'Zone A'),
-    ('4103403', 'Zone A'),
-    ('4103404', 'Zone A'),
-    ('4103405', 'Zone A'),
-    ('4103406', 'Zone B'),
-    ('4103407', 'Zone A')
-  t(region_id, mwm_group)
+    ('3060792', 2),
+    ('3060793', 2),
+    ('3061757', 3),
+    ('3061758', 3),
+    ('3061826', 1),
+    ('3061827', 3),
+    ('3061846', 1),
+    ('3062184', 2),
+    ('3062185', 2),
+    ('3584607', 1),
+    ('3726124', 4),
+    ('3726170', 4),
+    ('3726175', 4),
+    ('3726184', 3),
+    ('3726186', 3),
+    ('3726189', 3),
+    ('3726211', 3),
+    ('3824206', 4),
+    ('3824207', 1),
+    ('3824513', 1),
+    ('4103336', 4),
+    ('4103337', 1),
+    ('4103403', 1),
+    ('4103404', 1),
+    ('4103405', 1),
+    ('4103406', 2),
+    ('4103407', 1)
+  t(region_id, mwm_group_id)
 );
 
 -- To GeoJson V1
@@ -135,10 +135,10 @@ egypt_region_ids as (
   where role = 'subarea'
 ),
 egypt_regions as (
- select region_to_mwm.mwm_group, ST_MemUnion_Agg(OSM.geometry) as geometry
+ select region_to_mwm.mwm_group_id, ST_MemUnion_Agg(OSM.geometry) as geometry
    from '/Users/skozyr/Projects/OSM/duckdb/egypt-260420.osm.pbf' OSM
    JOIN region_to_mwm ON OSM.id = region_to_mwm.region_id
-  GROUP BY region_to_mwm.mwm_group
+  GROUP BY region_to_mwm.mwm_group_id
 ),
 objects as (
  select id, geometry
@@ -146,13 +146,13 @@ objects as (
   where kind in ('line', 'node', 'area')
 ),
 objects_by_region as (
-SELECT egypt_regions.mwm_group, count(objects.*) as num_objects, egypt_regions.geometry
+SELECT egypt_regions.mwm_group_id, count(objects.*) as num_objects, egypt_regions.geometry
   FROM egypt_regions
   JOIN objects on ST_Intersects(egypt_regions.geometry, objects.geometry)
- GROUP BY egypt_regions.mwm_group, egypt_regions.geometry
+ GROUP BY egypt_regions.mwm_group_id, egypt_regions.geometry
 )
 
-select mwm_group, mwm_group as osm_id, mwm_group as label, '#0B6623' as fill, (num_objects*0.8/2098463) as "fill-opacity",
+select mwm_group_id as id, mwm_group_id as osm_id, ('Zone ' || mwm_group_id) as label, '#0B6623' as fill, (num_objects*0.8/2098463) as "fill-opacity",
        num_objects, round(100 * num_objects / 5716441, 0) as percent, geometry
 from objects_by_region
 
@@ -165,34 +165,34 @@ DROP TABLE IF EXISTS region_to_mwm;
 CREATE TABLE region_to_mwm AS (
   SELECT *
     FROM VALUES
-    ('3060792', 'Zone B'),
-    ('3060793', 'Zone B'),
-    ('3061757', 'Zone C'),
-    ('3061758', 'Zone C'),
-    ('3061826', 'Zone A'),
-    ('3061827', 'Zone C'),
-    ('3061846', 'Zone A'),
-    ('3062184', 'Zone B'),
-    ('3062185', 'Zone B'),
-    ('3584607', 'Zone A'),
-    ('3726124', 'Zone D'),
-    ('3726170', 'Zone C'),
-    ('3726175', 'Zone C'),
-    ('3726184', 'Zone C'),
-    ('3726186', 'Zone C'),
-    ('3726189', 'Zone C'),
-    ('3726211', 'Zone C'),
-    ('3824206', 'Zone D'),
-    ('3824207', 'Zone A'),
-    ('3824513', 'Zone A'),
-    ('4103336', 'Zone D'),
-    ('4103337', 'Zone A'),
-    ('4103403', 'Zone B'),
-    ('4103404', 'Zone B'),
-    ('4103405', 'Zone A'),
-    ('4103406', 'Zone B'),
-    ('4103407', 'Zone A')
-  t(region_id, mwm_group)
+    ('3060792', 2),
+    ('3060793', 2),
+    ('3061757', 3),
+    ('3061758', 3),
+    ('3061826', 1),
+    ('3061827', 3),
+    ('3061846', 1),
+    ('3062184', 2),
+    ('3062185', 2),
+    ('3584607', 1),
+    ('3726124', 4),
+    ('3726170', 3),
+    ('3726175', 3),
+    ('3726184', 3),
+    ('3726186', 3),
+    ('3726189', 3),
+    ('3726211', 3),
+    ('3824206', 4),
+    ('3824207', 1),
+    ('3824513', 1),
+    ('4103336', 4),
+    ('4103337', 1),
+    ('4103403', 2),
+    ('4103404', 2),
+    ('4103405', 1),
+    ('4103406', 2),
+    ('4103407', 1)
+  t(region_id, mwm_group_id)
 );
 
 -- To GeoJson
@@ -210,10 +210,10 @@ egypt_region_ids as (
   where role = 'subarea'
 ),
 egypt_regions as (
- select region_to_mwm.mwm_group, ST_MemUnion_Agg(OSM.geometry) as geometry
+ select region_to_mwm.mwm_group_id, ST_MemUnion_Agg(OSM.geometry) as geometry
    from '/Users/skozyr/Projects/OSM/duckdb/egypt-260420.osm.pbf' OSM
    JOIN region_to_mwm ON OSM.id = region_to_mwm.region_id
-  GROUP BY region_to_mwm.mwm_group
+  GROUP BY region_to_mwm.mwm_group_id
 ),
 objects as (
  select id, geometry
@@ -221,13 +221,13 @@ objects as (
   where kind in ('line', 'node', 'area')
 ),
 objects_by_region as (
-SELECT egypt_regions.mwm_group, count(objects.*) as num_objects, egypt_regions.geometry
+SELECT egypt_regions.mwm_group_id, count(objects.*) as num_objects, egypt_regions.geometry
   FROM egypt_regions
   JOIN objects on ST_Intersects(egypt_regions.geometry, objects.geometry)
- GROUP BY egypt_regions.mwm_group, egypt_regions.geometry
+ GROUP BY egypt_regions.mwm_group_id, egypt_regions.geometry
 )
 
-select mwm_group, mwm_group as osm_id, mwm_group as label, '#DAA520' as fill, (num_objects*0.8/2471279) as "fill-opacity",
+select mwm_group_id as id, mwm_group_id as osm_id, ('Zone ' || mwm_group_id) as label, '#DAA520' as fill, (num_objects*0.8/2471279) as "fill-opacity",
        num_objects, round(100 * num_objects / 5716441, 0) as percent, geometry
 from objects_by_region
 
@@ -240,34 +240,34 @@ DROP TABLE IF EXISTS region_to_mwm;
 CREATE TABLE region_to_mwm AS (
   SELECT *
     FROM VALUES
-    ('3060792', 'Zone A'),
-    ('3060793', 'Zone A'),
-    ('3061757', 'Zone C'),
-    ('3061758', 'Zone C'),
-    ('3061826', 'Zone A'),
-    ('3061827', 'Zone C'),
-    ('3061846', 'Zone A'),
-    ('3062184', 'Zone A'),
-    ('3062185', 'Zone B'),
-    ('3584607', 'Zone A'),
-    ('3726124', 'Zone B'),
-    ('3726170', 'Zone C'),
-    ('3726175', 'Zone C'),
-    ('3726184', 'Zone C'),
-    ('3726186', 'Zone C'),
-    ('3726189', 'Zone C'),
-    ('3726211', 'Zone C'),
-    ('3824206', 'Zone B'),
-    ('3824207', 'Zone A'),
-    ('3824513', 'Zone A'),
-    ('4103336', 'Zone B'),
-    ('4103337', 'Zone B'),
-    ('4103403', 'Zone A'),
-    ('4103404', 'Zone A'),
-    ('4103405', 'Zone A'),
-    ('4103406', 'Zone A'),
-    ('4103407', 'Zone A')
-  t(region_id, mwm_group)
+    ('3060792', 1),
+    ('3060793', 1),
+    ('3061757', 3),
+    ('3061758', 3),
+    ('3061826', 1),
+    ('3061827', 3),
+    ('3061846', 1),
+    ('3062184', 1),
+    ('3062185', 2),
+    ('3584607', 1),
+    ('3726124', 2),
+    ('3726170', 3),
+    ('3726175', 3),
+    ('3726184', 3),
+    ('3726186', 3),
+    ('3726189', 3),
+    ('3726211', 3),
+    ('3824206', 2),
+    ('3824207', 1),
+    ('3824513', 1),
+    ('4103336', 2),
+    ('4103337', 2),
+    ('4103403', 1),
+    ('4103404', 1),
+    ('4103405', 1),
+    ('4103406', 1),
+    ('4103407', 1)
+  t(region_id, mwm_group_id)
 );
 
 -- To GeoJson
@@ -285,10 +285,10 @@ egypt_region_ids as (
   where role = 'subarea'
 ),
 egypt_regions as (
- select region_to_mwm.mwm_group, ST_MemUnion_Agg(OSM.geometry) as geometry
+ select region_to_mwm.mwm_group_id, ST_MemUnion_Agg(OSM.geometry) as geometry
    from '/Users/skozyr/Projects/OSM/duckdb/egypt-260420.osm.pbf' OSM
    JOIN region_to_mwm ON OSM.id = region_to_mwm.region_id
-  GROUP BY region_to_mwm.mwm_group
+  GROUP BY region_to_mwm.mwm_group_id
 ),
 objects as (
  select id, geometry
@@ -296,13 +296,13 @@ objects as (
   where kind in ('line', 'node', 'area')
 ),
 objects_by_region as (
-SELECT egypt_regions.mwm_group, count(objects.*) as num_objects, egypt_regions.geometry
+SELECT egypt_regions.mwm_group_id, count(objects.*) as num_objects, egypt_regions.geometry
   FROM egypt_regions
   JOIN objects on ST_Intersects(egypt_regions.geometry, objects.geometry)
- GROUP BY egypt_regions.mwm_group, egypt_regions.geometry
+ GROUP BY egypt_regions.mwm_group_id, egypt_regions.geometry
 )
 
-select mwm_group, mwm_group as osm_id, mwm_group as label, '#B7410E' as fill, (num_objects*0.8/2389655) as "fill-opacity",
+select mwm_group_id as id, mwm_group_id as osm_id, ('Zone ' || mwm_group_id) as label, '#B7410E' as fill, (num_objects*0.8/2389655) as "fill-opacity",
        num_objects, round(100 * num_objects / 5716441, 0) as percent, geometry
 from objects_by_region
 
